@@ -18,6 +18,16 @@
     `guild_id` | string | - | Guild 群组 ID，当 `detail_type` 为 `channel` 时必须传入
     `channel_id` | string | - | 频道 ID，当 `detail_type` 为 `channel` 时必须传入
     `message` | message | - | 消息内容
+    `origin_event` | map[string]any | 可选，回复事件，当 `origin_event` 字段存在时则为被动消息，否则为主动消息。
+    
+    其中 `origin_event` 定义如下：
+    
+    字段名 | 数据类型 | 说明
+    --- | --- | ---
+    `id` | string | 原事件 ID
+    `type` | string | 事件类型，必须是 meta、message、notice、request 中的一个，分别表示元事件、消息事件、通知事件和请求事件
+    `detail_type` | string | 事件详细类型
+    `sub_type` | string | 事件子类型（详细类型的下一级类型）
 
 === "响应数据"
 
